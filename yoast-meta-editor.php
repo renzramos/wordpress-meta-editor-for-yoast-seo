@@ -10,7 +10,8 @@ Author URI: https://www.renzramos.com
 
 define('YOAST_META_EDITOR_PLUGIN_TITLE', 'Yoast Meta Editor' );
 define('YOAST_META_EDITOR_PLUGIN_SLUG', 'yoast-meta-editor' );
-define('YOAST_META_EDITOR_PLUGIN_URL', plugin_dir_url(__FILE__) );
+define('YOAST_META_EDITOR_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define('YOAST_META_EDITOR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
 class YoastMetaEditor
 {
@@ -22,6 +23,8 @@ class YoastMetaEditor
 
         add_action( 'wp_ajax_yoast_meta_editor_action', array ( $this, 'yoast_meta_editor_action') );
         add_action( 'wp_ajax_nopriv_yoast_meta_editor_action', array ( $this, 'yoast_meta_editor_action') );
+
+        add_action ( 'init', array ( $this, 'yoast_meta_editor_updater') );
 
     }
 
@@ -169,6 +172,29 @@ class YoastMetaEditor
         wp_die();
     }
 
+
+    function yoast_meta_editor_updater(){
+
+        if (isset( $_GET['yoast-meta-editor-action'] ) && $_GET['yoast-meta-editor-action'] == 'update'):
+
+            echo '<h1>Updating...</h1>';
+            $version = file_get_contents('https://gitlab.com/lsidev/lsi-yoast-meta-editor/raw/master/version.json');
+            $version = json_decode($version);
+            $version_number = $version->number;
+            $plugin_repository_url = 'https://gitlab.com/lsidev/lsi-yoast-meta-editor/-/archive/1.0/lsi-yoast-meta-editor-' . $version_number . '.zip';
+            echo copy($plugin_repository_url,YOAST_META_EDITOR_PLUGIN_PATH . '/file.zip');
+            
+            exit;
+
+        endif;
+    }
+
+
 }
 $yoast_meta_editor = new YoastMetaEditor();
+
+
+
+
+
 ?>
