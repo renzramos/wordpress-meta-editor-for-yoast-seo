@@ -184,6 +184,16 @@ class YoastMetaEditor
             $plugin_repository_url = 'https://gitlab.com/lsidev/lsi-yoast-meta-editor/-/archive/1.0/lsi-yoast-meta-editor-' . $version_number . '.zip';
             echo copy($plugin_repository_url,YOAST_META_EDITOR_PLUGIN_PATH . '/file.zip');
             
+            $zip = new ZipArchive;
+            $res = $zip->open(YOAST_META_EDITOR_PLUGIN_PATH . '/file.zip');
+            if ($res === TRUE) {
+                $zip->extractTo(YOAST_META_EDITOR_PLUGIN_PATH);
+                $zip->close();
+                echo 'woot!';
+            } else {
+                echo 'doh!';
+            }
+
             exit;
 
         endif;
