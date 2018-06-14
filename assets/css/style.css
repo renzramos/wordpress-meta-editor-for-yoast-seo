@@ -1,0 +1,92 @@
+.yoast-meta-editor-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin: 15px 0px;
+}
+
+caption.top.tableexport-caption button {
+    margin-right: 5px;
+    text-transform: uppercase;
+    background: #7f8c8d;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 10px;
+}
+
+caption.top.tableexport-caption {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.yoast-meta-editor-table h2 {
+    margin: 0px;
+}
+
+.yoast-meta-editor-table tr.post-type {
+    background: #33333357;
+}
+.yoast-meta-editor-table .field {
+    width: 100%;
+    height: 32px;
+    margin: 0px;
+    line-height: 25px;
+    padding-right: 90px;
+}
+.yoast-meta-editor-table .field-confirmation {
+    position: absolute;
+    right: 10px;
+    background: #2c3e50;
+    bottom: 15px;
+    right: 11px;
+    padding: 6px 15px;
+    /* border-radius: 5px; */
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: white;
+    z-index: 999;
+    cursor: pointer;
+    height: 18px;
+}
+.yoast-meta-editor-table .field-confirmation.saved {
+    background: #27ae60;
+}
+.yoast-meta-editor-table .field.filled {
+    background: #4b7c60;
+    color: white;
+}
+.yoast-meta-editor-table textarea.field {
+    margin-top: 4px;
+}
+.yoast-meta-editor-table .field.empty {
+    background: rgba(231, 76, 60, 0.38);
+}
+
+.yoast-meta-editor-table td,
+.yoast-meta-editor-table th {
+    border: 1px solid #0000007a;
+    padding: 10px 10px;
+    vertical-align: middle;
+    position: relative;
+}
+.yoast-meta-editor-table td .character-count {
+    position: absolute;
+    font-size: 9px;
+    bottom: 0px;
+    color: black;
+    right: 12px;
+    font-weight: bolder;
+}
+.yoast-meta-editor-table thead th.page {
+    width: 15%;
+}
+
+.yoast-meta-editor-table thead th.title {
+    width: 25%;
+}
+
+.yoast-meta-editor-table thead th.description {
+    width: 55%;
+}
