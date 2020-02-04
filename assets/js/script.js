@@ -22,17 +22,18 @@ jQuery(document).ready(function ($) {
 
     $('.yoast-meta-editor-table .field').focus(function () {
 
-
+        $(this).addClass('active');
         $('.yoast-meta-editor-table .field-confirmation').remove();
-        
+
         selectedField = $(this);
         $(this).after('<div class="field-confirmation" data-values="' + values + '">Confirm</div>');
-        
+
     });
 
 
     $('.yoast-meta-editor-table .field').blur(function () {
-    
+
+        $(this).removeClass('active');
         value = $(this).val();
 
         if (value == '') {
@@ -43,16 +44,16 @@ jQuery(document).ready(function ($) {
         initPageWithoutDescriptionCount();
     });
 
-    
 
-    $(document).on('click', '.yoast-meta-editor-table .field-confirmation', function(){ 
 
-        
+    $(document).on('click', '.yoast-meta-editor-table .field-confirmation', function () {
+
+
         id = selectedField.attr('data-id');
         value = selectedField.val();
         field = selectedField.attr('name');
 
-        var values = encodeURI('value=' + value + '&field=' + field + '&id=' + id + '&action=yoast_meta_editor_action');
+        var values = encodeURI('value=' + value + '&field=' + field + '&id=' + id + '&action=meta_editor_yoast_seo_editor_action');
 
         $.post(ajaxURL, values, function (response) {
             console.log(response);
@@ -62,7 +63,7 @@ jQuery(document).ready(function ($) {
     });
 
 
-    
+
 
     initPageWithoutDescriptionCount();
 
